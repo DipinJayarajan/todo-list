@@ -8,7 +8,7 @@ import { CheckIcon  } from '@heroicons/react/24/outline';
 import { PencilSquareIcon  } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
-const TaskItem = ({task}) => {
+const TaskItem = ({task, deleteTask}) => {
   const [isChecked, setIsChecked ] = useState(task.checked);
 
   const handleCheckboxChange = (e) =>{
@@ -16,7 +16,7 @@ const TaskItem = ({task}) => {
   }
 
   return (
-    <li style={{ display: "flex" , flexDirection: "row" , justifyContent: "center", border: "solid .5px white" , borderRadius: "10px", gap: "10px" }} className={styles.task}>
+    <li style={{ display: "flex" , flexDirection: "row" , justifyContent: "space-around", border: "solid .5px white" , borderRadius: "10px", gap: "10px" }} className={styles.task}>
       <div className={styles["task-group"]}>
         <input
           type="checkbox"
@@ -37,7 +37,7 @@ const TaskItem = ({task}) => {
           </p> */}
         </label>
       </div>
-      <div style={{ display: "flex", padding: "10px" , gap: "10px", marginLeft: "50px"}} className={styles["task-group"]}>
+      <div style={{ display: "flex", padding: "10px" , gap: "10px", marginLeft: "50px", justifyContent: "end" , alignItems: "end"}} className={styles["task-group"]}>
         <button
           className='btn'
           aria-label={`Update ${task.name} Task`}
@@ -49,7 +49,7 @@ const TaskItem = ({task}) => {
         <button
           className={`btn ${styles.delete}`}
           aria-label={`Delete ${task.name} Task`}
-          // onClick={}
+          onClick={() => deleteTask(task.id) }
         >
           <TrashIcon width={24} height={24} />
         </button>
